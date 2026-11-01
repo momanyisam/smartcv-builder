@@ -1,0 +1,1628 @@
+/* =========================================
+   SMARTCV BUILDER 2.0
+   Modern responsive design
+========================================= */
+
+:root {
+    --primary: #5b45d5;
+    --primary-dark: #4532b2;
+    --primary-light: #eeeaff;
+    --background: #f5f6fb;
+    --surface: #ffffff;
+    --text: #25233a;
+    --muted: #77778b;
+    --border: #e5e5ef;
+    --danger: #d9364f;
+    --success: #13865c;
+    --radius: 14px;
+    --shadow: 0 8px 28px rgba(38, 32, 84, 0.07);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Inter, "Segoe UI", Arial, sans-serif;
+    background: var(--background);
+    color: var(--text);
+    line-height: 1.6;
+    font-size: 14px;
+}
+
+button,
+input,
+select,
+textarea {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+a:focus-visible {
+    outline: 3px solid rgba(91, 69, 213, 0.3);
+    outline-offset: 2px;
+}
+
+/* =========================================
+   HEADER
+========================================= */
+
+.app-header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-container {
+    max-width: 1500px;
+    margin: 0 auto;
+    min-height: 74px;
+    padding: 14px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 11px;
+    text-decoration: none;
+    color: var(--text);
+    font-size: 21px;
+    font-weight: 800;
+    letter-spacing: -0.6px;
+}
+
+.brand-icon {
+    width: 39px;
+    height: 39px;
+    display: grid;
+    place-items: center;
+    border-radius: 12px;
+    background: var(--primary);
+    color: white;
+    font-size: 23px;
+    box-shadow: 0 5px 12px rgba(91, 69, 213, 0.23);
+}
+
+.brand-highlight {
+    color: var(--primary);
+}
+
+.version-badge {
+    background: var(--primary-light);
+    color: var(--primary);
+    padding: 7px 12px;
+    border-radius: 20px;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+/* =========================================
+   MAIN LAYOUT
+========================================= */
+
+.app-container {
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 30px;
+}
+
+.welcome-section {
+    position: relative;
+    overflow: hidden;
+    padding: 36px;
+    border-radius: 20px;
+    color: white;
+    background: linear-gradient(120deg, #4430b8, #7864eb);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+    margin-bottom: 28px;
+    box-shadow: 0 12px 30px rgba(77, 58, 181, 0.17);
+}
+
+.welcome-section::after {
+    content: "";
+    position: absolute;
+    width: 280px;
+    height: 280px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+    right: 70px;
+    top: -140px;
+    pointer-events: none;
+}
+
+.eyebrow {
+    color: #ded8ff;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+.welcome-section h1 {
+    font-size: clamp(27px, 3vw, 40px);
+    line-height: 1.2;
+    letter-spacing: -1px;
+    margin-bottom: 12px;
+}
+
+.welcome-text {
+    max-width: 650px;
+    color: #eeeaff;
+    font-size: 15px;
+}
+
+.welcome-icon {
+    flex-shrink: 0;
+    font-size: 70px;
+    opacity: 0.9;
+    z-index: 1;
+}
+
+.workspace {
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(390px, 0.95fr);
+    gap: 26px;
+    align-items: start;
+}
+
+.builder-panel,
+.preview-panel {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    min-width: 0;
+}
+
+.builder-panel {
+    padding: 27px;
+}
+
+.panel-heading,
+.preview-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 15px;
+}
+
+.panel-heading {
+    padding-bottom: 23px;
+    border-bottom: 1px solid var(--border);
+}
+
+.panel-heading h2,
+.preview-toolbar h2 {
+    font-size: 21px;
+    letter-spacing: -0.5px;
+    margin-bottom: 4px;
+}
+
+.panel-heading p,
+.preview-toolbar p {
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.form-status {
+    color: var(--success);
+    background: #e9f8f1;
+    padding: 6px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+/* =========================================
+   FORM SECTIONS
+========================================= */
+
+.form-section {
+    padding: 27px 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.form-section:last-of-type {
+    border-bottom: none;
+}
+
+.section-heading {
+    display: flex;
+    align-items: flex-start;
+    gap: 13px;
+    margin-bottom: 21px;
+}
+
+.section-number {
+    flex-shrink: 0;
+    width: 35px;
+    height: 35px;
+    display: grid;
+    place-items: center;
+    background: var(--primary-light);
+    color: var(--primary);
+    font-size: 12px;
+    font-weight: 800;
+    border-radius: 10px;
+}
+
+.section-heading h3 {
+    font-size: 16px;
+    margin-bottom: 3px;
+}
+
+.section-heading p {
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 17px;
+}
+
+.form-group {
+    min-width: 0;
+    margin-bottom: 17px;
+}
+
+.form-grid .form-group {
+    margin-bottom: 0;
+}
+
+.full-width {
+    grid-column: 1 / -1;
+}
+
+.form-group label,
+.template-control label {
+    display: block;
+    font-weight: 700;
+    font-size: 12px;
+    margin-bottom: 7px;
+    color: #39374f;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select,
+.template-control select {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    border: 1px solid #dedeea;
+    border-radius: 8px;
+    background: #fff;
+    color: var(--text);
+    padding: 11px 12px;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-group input,
+.form-group select,
+.template-control select {
+    min-height: 43px;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #aaa9bb;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus,
+.template-control select:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(91, 69, 213, 0.09);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 85px;
+    line-height: 1.6;
+}
+
+.form-group small {
+    display: block;
+    color: var(--muted);
+    font-size: 11px;
+    margin-top: 7px;
+}
+
+/* =========================================
+   REPEATABLE ENTRIES
+========================================= */
+
+.repeat-list {
+    display: grid;
+    gap: 17px;
+}
+
+.repeat-card {
+    padding: 18px;
+    border: 1px solid var(--border);
+    border-radius: 11px;
+    background: #fcfcff;
+    min-width: 0;
+}
+
+.repeat-card-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 18px;
+}
+
+.repeat-card-heading h4 {
+    font-size: 13px;
+    font-weight: 800;
+}
+
+.remove-entry {
+    background: #fff0f2;
+    color: var(--danger);
+    border: 1px solid #ffd6dd;
+    border-radius: 7px;
+    padding: 6px 10px;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.remove-entry:hover {
+    background: #ffe0e5;
+}
+
+.add-entry-button {
+    margin-top: 15px;
+    width: 100%;
+    border: 1px dashed #b6aaf4;
+    background: #f8f6ff;
+    color: var(--primary);
+    padding: 12px;
+    border-radius: 9px;
+    font-weight: 800;
+    font-size: 12px;
+    transition: background 0.2s, border-color 0.2s;
+}
+
+.add-entry-button:hover {
+    background: var(--primary-light);
+    border-color: var(--primary);
+}
+
+/* =========================================
+   BUTTONS
+========================================= */
+
+.form-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    padding-top: 24px;
+}
+
+.button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid transparent;
+    border-radius: 9px;
+    padding: 12px 18px;
+    font-weight: 800;
+    font-size: 12px;
+    transition: transform 0.15s, background 0.2s;
+}
+
+.button:active {
+    transform: scale(0.98);
+}
+
+.button-primary {
+    background: var(--primary);
+    color: white;
+}
+
+.button-primary:hover {
+    background: var(--primary-dark);
+}
+
+.button-secondary {
+    background: #f0edff;
+    color: var(--primary);
+}
+
+.button-secondary:hover {
+    background: #e5dfff;
+}
+
+.button-danger {
+    background: white;
+    border-color: #ffd6dd;
+    color: var(--danger);
+}
+
+.button-danger:hover {
+    background: #fff0f2;
+}
+
+/* =========================================
+   PREVIEW PANEL
+========================================= */
+
+.preview-panel {
+    position: sticky;
+    top: 96px;
+    overflow: hidden;
+}
+
+.preview-toolbar {
+    padding: 22px;
+    border-bottom: 1px solid var(--border);
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.template-control {
+    min-width: 115px;
+}
+
+.template-control label {
+    font-size: 11px;
+}
+
+.template-control select {
+    padding: 8px 10px;
+    min-height: 37px;
+    font-size: 12px;
+}
+
+.cv-preview-wrapper {
+    padding: 22px;
+    background: #f0f0f7;
+    overflow: auto;
+    max-height: 75vh;
+}
+
+.cv-paper {
+    width: 100%;
+    max-width: 794px;
+    min-height: 900px;
+    margin: 0 auto;
+    padding: 42px 36px;
+    background: white;
+    color: #242434;
+    box-shadow: 0 3px 14px rgba(0, 0, 0, 0.08);
+    overflow-wrap: anywhere;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.cv-paper [hidden] {
+    display: none !important;
+}
+
+.cv-header {
+    padding-bottom: 22px;
+    border-bottom: 2px solid #5b45d5;
+    margin-bottom: 22px;
+}
+
+.cv-header h1 {
+    font-size: 29px;
+    line-height: 1.2;
+    margin-bottom: 7px;
+    overflow-wrap: anywhere;
+}
+
+.cv-professional-title {
+    color: #5b45d5;
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.cv-contact,
+.cv-links {
+    color: #626273;
+    font-size: 10px;
+    line-height: 1.8;
+    overflow-wrap: anywhere;
+}
+
+.cv-links a {
+    color: #5b45d5;
+    text-decoration: none;
+    overflow-wrap: anywhere;
+}
+
+.cv-section {
+    margin-bottom: 24px;
+    break-inside: auto;
+}
+
+.cv-section h2 {
+    color: #4532b2;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding-bottom: 7px;
+    margin-bottom: 12px;
+    border-bottom: 1px solid #dedbed;
+}
+
+.cv-section p,
+.cv-section li,
+.cv-entry-details {
+    font-size: 11px;
+    line-height: 1.75;
+    color: #444455;
+    white-space: pre-line;
+}
+
+.cv-entry {
+    margin-bottom: 15px;
+    break-inside: avoid;
+}
+
+.cv-entry:last-child {
+    margin-bottom: 0;
+}
+
+.cv-entry-heading {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    align-items: flex-start;
+    margin-bottom: 3px;
+}
+
+.cv-entry-heading h3 {
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.cv-entry-date {
+    color: #666678;
+    font-size: 10px;
+    flex-shrink: 0;
+    text-align: right;
+}
+
+.cv-entry-subtitle {
+    color: #5b45d5;
+    font-size: 10px;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.cv-entry-details {
+    overflow-wrap: anywhere;
+}
+
+.cv-skills-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+}
+
+.cv-skill {
+    display: inline-block;
+    padding: 5px 9px;
+    border-radius: 5px;
+    background: #f0edff;
+    color: #4934b9;
+    font-size: 10px;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+}
+
+/* =========================================
+   MODERN CV TEMPLATE
+========================================= */
+
+.cv-paper.modern .cv-header {
+    border-bottom: 4px solid #168b85;
+    padding-bottom: 24px;
+}
+
+.cv-paper.modern .cv-professional-title,
+.cv-paper.modern .cv-section h2,
+.cv-paper.modern .cv-entry-subtitle {
+    color: #168b85;
+}
+
+.cv-paper.modern .cv-section h2 {
+    border-bottom-color: #cde9e6;
+}
+
+.cv-paper.modern .cv-skill {
+    background: #e2f4f2;
+    color: #116d68;
+    border-radius: 20px;
+}
+
+.cv-paper.modern .cv-links a {
+    color: #168b85;
+}
+
+/* =========================================
+   PDF / PRINT ACTIONS
+========================================= */
+
+.preview-actions {
+    padding: 20px 22px 24px;
+}
+
+.preview-actions .button {
+    width: 100%;
+    min-height: 45px;
+}
+
+.preview-note {
+    color: var(--muted);
+    font-size: 11px;
+    line-height: 1.7;
+    margin-top: 12px;
+    text-align: center;
+}
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.app-footer {
+    text-align: center;
+    padding: 25px 15px;
+    color: var(--muted);
+    font-size: 11px;
+}
+
+/* =========================================
+   RESPONSIVE DESIGN
+========================================= */
+
+@media (max-width: 1100px) {
+    .workspace {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .preview-panel {
+        position: static;
+    }
+
+    .cv-preview-wrapper {
+        max-height: none;
+    }
+
+    .cv-paper {
+        max-width: 794px;
+    }
+}
+
+@media (max-width: 650px) {
+    .header-container {
+        min-height: 65px;
+        padding: 12px 16px;
+    }
+
+    .brand {
+        font-size: 18px;
+    }
+
+    .brand-icon {
+        width: 35px;
+        height: 35px;
+    }
+
+    .app-container {
+        padding: 17px 12px;
+    }
+
+    .welcome-section {
+        padding: 25px 21px;
+        border-radius: 15px;
+        margin-bottom: 18px;
+    }
+
+    .welcome-section h1 {
+        font-size: 27px;
+    }
+
+    .welcome-text {
+        font-size: 13px;
+    }
+
+    .welcome-icon {
+        display: none;
+    }
+
+    .builder-panel {
+        padding: 19px 15px;
+    }
+
+    .panel-heading h2,
+    .preview-toolbar h2 {
+        font-size: 19px;
+    }
+
+    .form-grid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 15px;
+    }
+
+    .full-width {
+        grid-column: auto;
+    }
+
+    .section-heading h3 {
+        font-size: 14px;
+    }
+
+    .repeat-card {
+        padding: 13px;
+    }
+
+    .preview-toolbar {
+        padding: 18px 15px;
+    }
+
+    .cv-preview-wrapper {
+        padding: 10px;
+    }
+
+    .cv-paper {
+        padding: 27px 20px;
+        min-height: 600px;
+    }
+
+    .cv-header h1 {
+        font-size: 24px;
+    }
+
+    .cv-entry-heading {
+        flex-direction: column;
+        gap: 2px;
+    }
+
+    .cv-entry-date {
+        text-align: left;
+    }
+
+    .form-actions {
+        flex-direction: column;
+    }
+
+    .form-actions .button {
+        width: 100%;
+    }
+
+    .preview-actions {
+        padding: 17px 15px 20px;
+    }
+}
+
+/* =========================================
+   PRINT: EXPORT ONLY THE CV
+========================================= */
+
+@page {
+    size: A4;
+    margin: 15mm;
+}
+
+@media print {
+    html,
+    body {
+        width: 100%;
+        min-width: 0;
+        height: auto;
+        margin: 0 !important;
+        padding: 0 !important;
+        background: white !important;
+        color: #000 !important;
+        font-size: 11pt;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    body * {
+        visibility: hidden !important;
+    }
+
+    #cvPreview,
+    #cvPreview * {
+        visibility: visible !important;
+    }
+
+    #cvPreview {
+        position: absolute !important;
+        left: 0 !important;
+        top: 0 !important;
+        width: 100% !important;
+        max-width: none !important;
+        min-height: 0 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        border: none !important;
+        box-shadow: none !important;
+        overflow: visible !important;
+        background: white !important;
+        color: #000 !important;
+        font-size: 10pt;
+    }
+
+    #cvPreview .cv-header {
+        border-bottom-color: #555 !important;
+    }
+
+    #cvPreview .cv-section {
+        display: block;
+        margin-bottom: 18px;
+    }
+
+    #cvPreview .cv-section[hidden] {
+        display: none !important;
+    }
+
+    #cvPreview .cv-section h2 {
+        color: #222 !important;
+        border-bottom-color: #aaa !important;
+    }
+
+    #cvPreview .cv-professional-title,
+    #cvPreview .cv-entry-subtitle,
+    #cvPreview .cv-links a {
+        color: #333 !important;
+    }
+
+    #cvPreview .cv-skill {
+        color: #222 !important;
+        background: #f1f1f1 !important;
+        border: 1px solid #ddd;
+    }
+
+    #cvPreview .cv-entry {
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+
+    #cvPreview h1,
+    #cvPreview h2,
+    #cvPreview h3 {
+        break-after: avoid;
+        page-break-after: avoid;
+    }
+
+    #cvPreview p,
+    #cvPreview li {
+        orphans: 3;
+        widows: 3;
+    }
+
+    .app-header,
+    .welcome-section,
+    .builder-panel,
+    .preview-toolbar,
+    .preview-actions,
+    .app-footer {
+        display: none !important;
+    }
+
+    .app-container,
+    .workspace,
+    .preview-panel,
+    .cv-preview-wrapper {
+        display: block !important;
+        position: static !important;
+        width: 100% !important;
+        max-width: none !important;
+        height: auto !important;
+        max-height: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        border: none !important;
+        box-shadow: none !important;
+        overflow: visible !important;
+        background: white !important;
+    }
+}
+/* ================================
+   GRADUATE CV TEMPLATE
+================================ */
+
+.cv-paper.graduate {
+    font-family: Arial, sans-serif;
+    color: #243247;
+    border-top: 8px solid #2563eb;
+}
+
+.cv-paper.graduate #previewName {
+    color: #1d4ed8;
+    font-size: 30px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.cv-paper.graduate #previewTitle {
+    color: #475569;
+    font-size: 16px;
+}
+
+.cv-paper.graduate .cv-section h3 {
+    color: #1d4ed8;
+    border-bottom: 2px solid #bfdbfe;
+    padding-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.cv-paper.graduate .cv-contact,
+.cv-paper.graduate .cv-links {
+    color: #475569;
+    font-size: 12px;
+}
+
+
+/* ================================
+   ACADEMIC CV TEMPLATE
+================================ */
+
+.cv-paper.academic {
+    font-family: Georgia, "Times New Roman", serif;
+    color: #222;
+    border-top: 5px solid #166534;
+}
+
+.cv-paper.academic #previewName {
+    color: #166534;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 30px;
+}
+
+.cv-paper.academic #previewTitle {
+    color: #444;
+    font-style: italic;
+}
+
+.cv-paper.academic .cv-section h3 {
+    color: #166534;
+    border-bottom: 1px solid #166534;
+    padding-bottom: 5px;
+}
+
+.cv-paper.academic .cv-contact,
+.cv-paper.academic .cv-links {
+    font-size: 12px;
+    color: #444;
+}
+
+
+/* Keep all templates readable when printed */
+
+@media print {
+    .cv-paper.graduate,
+    .cv-paper.academic {
+        box-shadow: none !important;
+        margin: 0 !important;
+    }
+}
+/* PROFILE PHOTO UPLOAD */
+
+.photo-upload-preview {
+    margin-top: 12px;
+}
+
+#photoPreview {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 2px solid #ddd;
+    display: block;
+    margin-bottom: 10px;
+}
+
+#removePhotoButton {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 6px;
+    background: #dc2626;
+    color: white;
+    cursor: pointer;
+}
+
+/* PHOTO ON THE CV */
+
+.cv-photo-container {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+#cvPhoto {
+    width: 110px;
+    height: 110px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid #e5e7eb;
+}
+
+/* Graduate and Academic templates */
+
+.cv-paper.graduate #cvPhoto {
+    border-radius: 8px;
+    border-color: #2563eb;
+}
+
+.cv-paper.academic #cvPhoto {
+    border-radius: 4px;
+    border-color: #166534;
+}
+
+@media print {
+    #cvPhoto {
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+    }
+}
+/* ==========================================
+   SMARTCV BUILDER - PROFESSIONAL PDF EXPORT
+========================================== */
+
+@page {
+    size: A4;
+    margin: 12mm;
+}
+
+@media print {
+
+    /* Hide everything except the CV preview */
+    body * {
+        visibility: hidden !important;
+    }
+
+    #cvPreview,
+    #cvPreview * {
+        visibility: visible !important;
+    }
+
+    #cvPreview {
+        position: absolute !important;
+        left: 0 !important;
+        top: 0 !important;
+        width: 100% !important;
+        max-width: none !important;
+        min-height: 0 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        border: none !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+        background: #fff !important;
+        color: #222 !important;
+        overflow: visible !important;
+        box-sizing: border-box !important;
+    }
+
+    /* Professional typography */
+    #cvPreview h1 {
+        font-size: 23pt !important;
+        line-height: 1.2 !important;
+        margin: 0 0 5pt !important;
+    }
+
+    #cvPreview h2 {
+        font-size: 13pt !important;
+        margin: 12pt 0 5pt !important;
+        break-after: avoid !important;
+        page-break-after: avoid !important;
+    }
+
+    #cvPreview h3 {
+        font-size: 11pt !important;
+        break-after: avoid !important;
+        page-break-after: avoid !important;
+    }
+
+    #cvPreview p,
+    #cvPreview li {
+        font-size: 9.5pt !important;
+        line-height: 1.4 !important;
+    }
+
+    #cvPreview .cv-section {
+        margin-top: 10pt !important;
+        break-inside: auto;
+        page-break-inside: auto;
+    }
+
+    /* Keep individual entries together when possible */
+    #cvPreview .education-entry,
+    #cvPreview .experience-entry,
+    #cvPreview .certification-entry,
+    #cvPreview .project-entry {
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+
+    /* Keep the photo professional */
+    #cvPreview #cvPhoto {
+        max-width: 100px !important;
+        max-height: 100px !important;
+        object-fit: cover !important;
+        print-color-adjust: exact !important;
+        -webkit-print-color-adjust: exact !important;
+    }
+
+    /* Improve link and contact readability */
+    #cvPreview a {
+        color: #222 !important;
+        text-decoration: none !important;
+        overflow-wrap: anywhere;
+    }
+
+    #cvPreview .cv-contact,
+    #cvPreview .cv-links {
+        font-size: 9pt !important;
+        line-height: 1.5 !important;
+        overflow-wrap: anywhere;
+    }
+
+    /* Preserve the selected template's colors where supported */
+    #cvPreview,
+    #cvPreview * {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    /* Avoid clipping longer CVs */
+    html,
+    body {
+        height: auto !important;
+        overflow: visible !important;
+    }
+}
+/* ==========================================
+   SMARTCV BUILDER - MOBILE RESPONSIVENESS
+========================================== */
+
+/* Make sizing predictable */
+* {
+    box-sizing: border-box;
+}
+
+html {
+    width: 100%;
+    scroll-behavior: smooth;
+}
+
+body {
+    width: 100%;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+img {
+    max-width: 100%;
+}
+
+/* Keep form controls within the screen */
+input,
+textarea,
+select {
+    max-width: 100%;
+    font-size: 16px;
+}
+
+/* Make buttons comfortable to tap */
+button {
+    min-height: 40px;
+    cursor: pointer;
+}
+
+/* CV preview */
+#cvPreview {
+    width: 100%;
+    max-width: 100%;
+    overflow-wrap: anywhere;
+}
+
+#cvPreview h1,
+#cvPreview h2,
+#cvPreview h3,
+#cvPreview p {
+    overflow-wrap: anywhere;
+}
+
+#previewContact,
+#previewLinks {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
+
+/* CV photo */
+.cv-photo-container img,
+#cvPhoto {
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+/* CV improvement assistant */
+.cv-assistant {
+    width: 100%;
+    max-width: 100%;
+}
+
+.assistant-header,
+.cv-score-container {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+#cvSuggestions {
+    overflow-wrap: anywhere;
+}
+
+#cvSuggestions li {
+    margin-bottom: 16px;
+}
+
+/* ==========================================
+   TABLETS
+========================================== */
+
+@media screen and (max-width: 900px) {
+
+    .cv-paper {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .preview-actions {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+    }
+
+    .preview-actions button {
+        width: 100%;
+    }
+}
+
+/* ==========================================
+   MOBILE PHONES
+========================================== */
+
+@media screen and (max-width: 600px) {
+
+    body {
+        font-size: 15px;
+    }
+
+    /* Prevent large headings from overflowing */
+    h1 {
+        font-size: clamp(24px, 7vw, 32px);
+    }
+
+    h2 {
+        font-size: 21px;
+    }
+
+    h3 {
+        font-size: 18px;
+    }
+
+    /* Form fields */
+    input,
+    textarea,
+    select {
+        width: 100%;
+        min-width: 0;
+    }
+
+    textarea {
+        resize: vertical;
+    }
+
+    /* CV preview spacing */
+    #cvPreview {
+        padding: 20px !important;
+        margin: 0 auto;
+        border-radius: 8px;
+    }
+
+    #cvPreview #previewName {
+        font-size: 25px !important;
+        line-height: 1.25;
+    }
+
+    #cvPreview .cv-professional-title {
+        font-size: 15px;
+    }
+
+    #cvPreview .cv-contact,
+    #cvPreview .cv-links {
+        font-size: 12px;
+        line-height: 1.6;
+    }
+
+    #cvPreview .cv-section {
+        margin-top: 18px;
+    }
+
+    /* Photo */
+    #cvPhoto {
+        width: 90px;
+        height: 90px;
+    }
+
+    /* Assistant */
+    .assistant-header {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .assistant-header button {
+        width: 100%;
+    }
+
+    .cv-score-container {
+        align-items: flex-start;
+    }
+
+    /* Buttons */
+    button,
+    .button {
+        max-width: 100%;
+        white-space: normal;
+    }
+
+    /* Dynamic form entries */
+    .education-entry,
+    .experience-entry,
+    .certification-entry,
+    .project-entry {
+        max-width: 100%;
+    }
+}
+
+/* ==========================================
+   SMALL PHONES
+========================================== */
+
+@media screen and (max-width: 380px) {
+
+    #cvPreview {
+        padding: 14px !important;
+    }
+
+    #cvPreview #previewName {
+        font-size: 22px !important;
+    }
+
+    #cvPreview .cv-section h2 {
+        font-size: 17px;
+    }
+
+    .cv-score-container {
+        gap: 10px;
+    }
+}
+/* ==========================================
+   SMARTCV BUILDER - PROFESSIONAL INTERFACE
+========================================== */
+
+:root {
+    --scv-primary: #6046e8;
+    --scv-primary-dark: #4931c4;
+    --scv-light: #f5f3ff;
+    --scv-border: #e5e7eb;
+    --scv-text: #1f2937;
+    --scv-muted: #6b7280;
+    --scv-radius: 12px;
+}
+
+/* Smooth transitions */
+
+button,
+input,
+textarea,
+select,
+a {
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        transform 0.2s ease;
+}
+
+/* Form labels */
+
+label {
+    display: block;
+    margin-bottom: 7px;
+    color: var(--scv-text);
+    font-weight: 600;
+    font-size: 14px;
+}
+
+/* Form controls */
+
+input:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+textarea,
+select {
+    border: 1px solid var(--scv-border);
+    border-radius: 8px;
+    padding: 11px 13px;
+    color: var(--scv-text);
+    background: #fff;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    border-color: var(--scv-primary);
+    box-shadow: 0 0 0 3px rgb(96 70 232 / 12%);
+}
+
+textarea {
+    line-height: 1.6;
+}
+
+/* Buttons */
+
+button,
+.button {
+    border-radius: 8px;
+    font-weight: 600;
+}
+
+button:hover,
+.button:hover {
+    filter: brightness(0.96);
+}
+
+button:active,
+.button:active {
+    transform: scale(0.98);
+}
+
+button:focus-visible,
+.button:focus-visible {
+    outline: 3px solid rgb(96 70 232 / 35%);
+    outline-offset: 3px;
+}
+
+/* Primary buttons */
+
+.button-primary,
+#downloadButton,
+#analyzeCVButton {
+    background-color: var(--scv-primary);
+    color: #fff;
+    border-color: var(--scv-primary);
+}
+
+.button-primary:hover,
+#downloadButton:hover,
+#analyzeCVButton:hover {
+    background-color: var(--scv-primary-dark);
+}
+
+/* CV preview */
+
+#cvPreview {
+    border-radius: 10px;
+    box-shadow: 0 8px 30px rgb(31 41 55 / 8%);
+}
+
+/* CV improvement assistant */
+
+.cv-assistant {
+    margin-top: 28px;
+    padding: 24px;
+    border: 1px solid #e9e4ff;
+    border-radius: var(--scv-radius);
+    background: linear-gradient(135deg, #fff 0%, #faf8ff 100%);
+}
+
+.cv-assistant h2 {
+    color: var(--scv-text);
+}
+
+.cv-assistant p {
+    color: var(--scv-muted);
+    line-height: 1.6;
+}
+
+.cv-score-circle {
+    border-color: var(--scv-primary);
+}
+
+/* Suggestions */
+
+#cvSuggestions ul {
+    padding-left: 22px;
+}
+
+#cvSuggestions li {
+    margin-bottom: 14px;
+    padding-left: 4px;
+}
+
+#cvSuggestions li strong {
+    color: var(--scv-primary-dark);
+}
+
+/* Photo upload */
+
+#photoPreview {
+    box-shadow: 0 4px 12px rgb(31 41 55 / 10%);
+}
+
+/* Keyboard accessibility */
+
+button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Respect reduced-motion preferences */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Keep exported CV clean */
+
+@media print {
+    #cvPreview {
+        box-shadow: none !important;
+        border-radius: 0 !important;
+    }
+
+    button,
+    .cv-assistant {
+        display: none !important;
+    }
+}
+
+

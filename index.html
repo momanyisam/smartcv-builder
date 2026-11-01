@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="Create a professional CV with SmartCV Builder. Add education, work experience, skills, projects, and certifications.">
+    <meta name="theme-color" content="#5b45d5">
+
+    <title>SmartCV Builder 2.0 | Create Your Professional CV</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+
+<header class="app-header">
+    <div class="header-container">
+        <a href="#" class="brand">
+            <span class="brand-icon">S</span>
+            <span>SmartCV<span class="brand-highlight"> Builder</span></span>
+        </a>
+
+        <div class="header-actions">
+            <span class="version-badge">VERSION 2.0</span>
+        </div>
+    </div>
+</header>
+
+<main class="app-container">
+
+    <section class="welcome-section">
+        <div>
+            <p class="eyebrow">YOUR CAREER STARTS HERE</p>
+            <h1>Build a CV that opens doors.</h1>
+            <p class="welcome-text">
+                Create a professional CV, highlight your achievements,
+                and prepare your application for the next opportunity.
+            </p>
+        </div>
+
+        <div class="welcome-icon" aria-hidden="true">📄</div>
+    </section>
+
+    <div class="workspace">
+
+        <!-- ==================================
+             LEFT: CV BUILDER FORM
+        =================================== -->
+
+        <section class="builder-panel">
+
+            <div class="panel-heading">
+                <div>
+                    <h2>Build Your CV</h2>
+                    <p>Complete the sections relevant to your career.</p>
+                </div>
+
+                <span class="form-status" id="formStatus" role="status">
+                    Ready
+                </span>
+            </div>
+
+            <form id="cvForm">
+
+                <!-- PERSONAL INFORMATION -->
+
+                <section class="form-section">
+                    <div class="section-heading">
+                        <span class="section-number">01</span>
+                        <div>
+                            <h3>Personal Information</h3>
+                            <p>How employers can identify and contact you.</p>
+                        </div>
+                    </div>
+
+                    <div class="form-grid">
+
+                        <div class="form-group full-width">
+                            <label for="fullName">Full Name *</label>
+                            <input
+                                type="text"
+                                id="fullName"
+                                name="fullName"
+                                placeholder="e.g. Sam Momanyi"
+                                autocomplete="name"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="professionalTitle">Professional Title *</label>
+                            <input
+                                type="text"
+                                id="professionalTitle"
+                                name="professionalTitle"
+                                placeholder="e.g. Graduate Teacher"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                placeholder="you@example.com"
+                                autocomplete="email"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input
+                                type="tel"
+                                id="phone"
+                                name="phone"
+                                placeholder="+254 7XX XXX XXX"
+                                autocomplete="tel"
+                            >
+                        </div>
+                        <div class="form-group">
+                       <label for="profilePhoto">Profile Photo</label>
+                       <input type="file" id="profilePhoto" accept="image/*">
+                       <small>Upload a professional photo (JPG, PNG, or WebP).</small>
+
+                          <div class="photo-upload-preview">
+                                  <img id="photoPreview" src="" alt="Profile photo preview"
+                                       style="display: none;">
+
+                               <button type="button" id="removePhotoButton"
+                                  style="display: none;">
+                              Remove Photo
+                                   </button>
+                                    </div>
+                            </div>
+                        <div class="form-group">
+                            <label for="location">Location</label>
+                            <input
+                                type="text"
+                                id="location"
+                                name="location"
+                                placeholder="e.g. Eldoret, Kenya"
+                                autocomplete="address-level2"
+                            >
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label for="linkedin">LinkedIn Profile</label>
+                            <input
+                                type="url"
+                                id="linkedin"
+                                name="linkedin"
+                                placeholder="https://www.linkedin.com/in/yourprofile"
+                            >
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label for="portfolio">Website or Portfolio</label>
+                            <input
+                                type="url"
+                                id="portfolio"
+                                name="portfolio"
+                                placeholder="https://yourwebsite.com"
+                            >
+                        </div>
+
+                    </div>
+                </section>
+
+                <!-- CAREER PROFILE -->
+
+                <section class="form-section">
+                    <div class="section-heading">
+                        <span class="section-number">02</span>
+                        <div>
+                            <h3>Professional Profile</h3>
+                            <p>Introduce yourself and explain what you offer.</p>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="profileType">Profile Type</label>
+
+                        <select id="profileType" name="profileType">
+                            <option value="summary">Professional Summary</option>
+                            <option value="objective">Career Objective</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="summary" id="summaryLabel">
+                            Professional Summary
+                        </label>
+
+                        <textarea
+                            id="summary"
+                            name="summary"
+                            rows="5"
+                            placeholder="Describe your qualifications, strengths, experience, and career goals..."
+                        ></textarea>
+
+                        <small>
+                            Keep it relevant to the opportunity you are applying for.
+                        </small>
+                    </div>
+                </section>
+
+                <!-- EDUCATION -->
+
+                <section class="form-section">
+                    <div class="section-heading">
+                        <span class="section-number">03</span>
+                        <div>
+                            <h3>Education</h3>
+                            <p>Add your university, college, and school qualifications.</p>
+                        </div>
+                    </div>
+
+                    <div id="educationList" class="repeat-list">
+
+                        <div class="repeat-card" data-entry="education">
+                            <div class="repeat-card-heading">
+                                <h4>Qualification 1</h4>
+                                <button
+                                    type="button"
+                                    class="remove-entry"
+                                    data-remove
+                                    aria-label="Remove qualification"
+                                >Remove</button>
+                            </div>
+
+                            <div class="form-grid">
+
+                                <div class="form-group">
+                                    <label>Qualification</label>
+                                    <input
+                                        type="text"
+                                        name="educationQualification"
+                                        placeholder="e.g. Bachelor of Education"
+                                    >
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Institution</label>
+                                    <input
+                                        type="text"
+                                        name="educationInstitution"
+                                        placeholder="University or college"
+                                    >
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Start Year</label>
+                                    <input
+                                        type="text"
+                                        name="educationStart"
+                                        placeholder="2022"
+                                    >
+                                </div>
+
+                                <div class="form-group">
+                                    <label>End Year</label>
+                                    <input
+                                        type="text"
+                                        name="educationEnd"
+                                        placeholder="2026 or Present"
+                                    >
+                                </div>
+
+                                <div class="form-group full-width">
+                                    <label>Relevant Details</label>
+                                    <textarea
+                                        name="educationDetails"
+                                        rows="2"
+                                        placeholder="Relevant coursework, grades, achievements..."
+                                    ></textarea>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <button
+                        type="button"
+                        class="add-entry-button"
+                        id="addEducationButton"
+                    >+ Add Another Qualification</button>
+                </section>
+
+                <!-- WORK EXPERIENCE -->
+
+                <section class="form-section">
+                    <div class="section-heading">
+                        <span class="section-number">04</span>
+                        <div>
+                            <h3>Work Experience</h3>
+                            <p>Show your previous roles, responsibilities, and achievements.</p>
+                        </div>
+                    </div>
+
+                    <div id="experienceList" class="repeat-list">
+
+                        <div class="repeat-card" data-entry="experience">
+                            <div class="repeat-card-heading">
+                                <h4>Experience 1</h4>
+                                <button
+                                    type="button"
+                                    class="remove-entry"
+                                    data-remove
+                                    aria-label="Remove work experience"
+                                >Remove</button>
+                            </div>
+
+                            <div class="form-grid">
+
+                                <div class="form-group">
+                                    <label>Job Title</label>
+                                    <input
+                                        type="text"
+                                        name="experienceTitle"
+                                        placeholder="e.g. Assistant Teacher"
+                                    >
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Employer</label>
+                                    <input
+                                        type="text"
+                                        name="experienceEmployer"
+                                        placeholder="Company or organisation"
+                                    >
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Start Date</label>
+                                    <input
+                                        type="text"
+                                        name="experienceStart"
+                                        placeholder="Jan 2024"
+                                    >
+                                </div>
+
+                                <div class="form-group">
+                                    <label>End Date</label>
+                                    <input
+                                        type="text"
+                                        name="experienceEnd"
+                                        placeholder="Present or Dec 2025"
+                                    >
+                                </div>
+
+                                <div class="form-group full-width">
+                                    <label>Responsibilities and Achievements</label>
+                                    <textarea
+                                        name="experienceDetails"
+                                        rows="4"
+                                        placeholder="Describe your responsibilities and measurable achievements. Use a new line for each point."
+                                    ></textarea>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <button
+                        type="button"
+                        class="add-entry-button"
+                        id="addExperienceButton"
+                    >+ Add Another Job</button>
+                </section>
+
+                <!-- SKILLS -->
+
+                <section class="form-section">
+                    <div class="section-heading">
+                        <span class="section-number">05</span>
+                        <div>
+                            <h3>Skills</h3>
+                            <p>Highlight abilities relevant to your target role.</p>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="skills">Your Skills</label>
+
+                        <textarea
+                            id="skills"
+                            name="skills"
+                            rows="4"
+                            placeholder="Enter one skill per line, or separate skills with commas.&#10;Communication&#10;Leadership&#10;HTML and CSS"
+                        ></textarea>
+
+                        <small>
+                            Include technical, professional, and relevant interpersonal skills.
+                        </small>
+                    </div>
+                </section>
+
+                <!-- CERTIFICATIONS -->
+
+                <section class="form-section">
+                    <div class="section-heading">
+                        <span class="section-number">06</span>
+                        <div>
+                            <h3>Certifications</h3>
+                            <p>Add professional certificates, licences, and training.</p>
+                        </div>
+                    </div>
+
+                    <div id="certificationList" class="repeat-list"></div>
+
+                    <button
+                        type="button"
+                        class="add-entry-button"
+                        id="addCertificationButton"
+                    >+ Add Certification</button>
+                </section>
+
+                <!-- PROJECTS -->
+
+                <section class="form-section">
+                    <div class="section-heading">
+                        <span class="section-number">07</span>
+                        <div>
+                            <h3>Projects</h3>
+                            <p>Demonstrate practical work, especially if you are a student or graduate.</p>
+                        </div>
+                    </div>
+
+                    <div id="projectList" class="repeat-list"></div>
+
+                    <button
+                        type="button"
+                        class="add-entry-button"
+                        id="addProjectButton"
+                    >+ Add Project</button>
+                </section>
+
+                <!-- ACHIEVEMENTS -->
+
+                <section class="form-section">
+                    <div class="section-heading">
+                        <span class="section-number">08</span>
+                        <div>
+                            <h3>Achievements and Awards</h3>
+                            <p>Showcase meaningful academic or professional accomplishments.</p>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="achievements">Achievements</label>
+
+                        <textarea
+                            id="achievements"
+                            name="achievements"
+                            rows="3"
+                            placeholder="Enter each achievement on a new line."
+                        ></textarea>
+                    </div>
+                </section>
+
+                <!-- VOLUNTEER EXPERIENCE -->
+
+                <section class="form-section">
+                    <div class="section-heading">
+                        <span class="section-number">09</span>
+                        <div>
+                            <h3>Volunteer Experience</h3>
+                            <p>Include community service and unpaid roles relevant to your career.</p>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="volunteerExperience">Volunteer Experience</label>
+
+                        <textarea
+                            id="volunteerExperience"
+                            name="volunteerExperience"
+                            rows="3"
+                            placeholder="Organisation, role, dates, and contributions..."
+                        ></textarea>
+                    </div>
+                </section>
+
+                <!-- LANGUAGES -->
+
+                <section class="form-section">
+                    <div class="section-heading">
+                        <span class="section-number">10</span>
+                        <div>
+                            <h3>Languages</h3>
+                            <p>List languages and your proficiency where relevant.</p>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="languages">Languages</label>
+
+                        <textarea
+                            id="languages"
+                            name="languages"
+                            rows="2"
+                            placeholder="English — Fluent&#10;Kiswahili — Fluent"
+                        ></textarea>
+                    </div>
+                </section>
+
+                <!-- REFERENCES -->
+
+                <section class="form-section">
+                    <div class="section-heading">
+                        <span class="section-number">11</span>
+                        <div>
+                            <h3>References</h3>
+                            <p>Add referees if the employer requests them.</p>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="references">References</label>
+
+                        <textarea
+                            id="references"
+                            name="references"
+                            rows="3"
+                            placeholder="Referee name, professional position, organisation, email, and phone number..."
+                        ></textarea>
+
+                        <small>
+                            Obtain permission before sharing another person's contact details.
+                            You may also write "Available upon request" when appropriate.
+                        </small>
+                    </div>
+                </section>
+
+                <!-- FORM ACTIONS -->
+
+                <div class="form-actions">
+                    <button
+                        type="button"
+                        id="saveButton"
+                        class="button button-secondary"
+                    >Save Draft</button>
+
+                    <button
+                        type="button"
+                        id="clearButton"
+                        class="button button-danger"
+                    >Clear Form</button>
+                </div>
+
+            </form>
+
+        </section>
+
+        <!-- ==================================
+             RIGHT: LIVE CV PREVIEW
+        =================================== -->
+
+        <aside class="preview-panel">
+
+            <div class="preview-toolbar">
+                <div>
+                    <h2>Live Preview</h2>
+                    <p>Your CV updates as you type.</p>
+                </div>
+
+                <div class="template-control">
+                    <label for="templateSelect">Template</label>
+
+                    <select id="templateSelect">
+    <option value="classic">Classic CV</option>
+    <option value="modern">Modern CV</option>
+    <option value="graduate">Graduate CV</option>
+    <option value="academic">Academic CV</option>
+</select>
+                </div>
+            </div>
+
+            <div class="cv-preview-wrapper">
+
+                <article
+                    id="cvPreview"
+                    class="cv-paper classic"
+                    aria-label="CV preview"
+                >
+
+                    <header class="cv-header">
+                        <div id="cvPhotoContainer" class="cv-photo-container"
+     style="display: none;">
+    <img id="cvPhoto" src="" alt="Profile photo">
+</div>
+                        <h1 id="previewName">Your Name</h1>
+
+                        <p id="previewTitle" class="cv-professional-title">
+                            Your Professional Title
+                        </p>
+
+                        <div id="previewContact" class="cv-contact"></div>
+
+                        <div id="previewLinks" class="cv-links"></div>
+                    </header>
+
+                    <section id="summarySection" class="cv-section" hidden>
+                        <h2 id="previewProfileHeading">Professional Summary</h2>
+                        <p id="previewSummary"></p>
+                    </section>
+
+                    <section id="educationSection" class="cv-section" hidden>
+                        <h2>Education</h2>
+                        <div id="previewEducationList"></div>
+                    </section>
+
+                    <section id="experienceSection" class="cv-section" hidden>
+                        <h2>Work Experience</h2>
+                        <div id="previewExperienceList"></div>
+                    </section>
+
+                    <section id="skillsSection" class="cv-section" hidden>
+                        <h2>Skills</h2>
+                        <div id="previewSkills"></div>
+                    </section>
+
+                    <section id="certificationsSection" class="cv-section" hidden>
+                        <h2>Certifications</h2>
+                        <div id="previewCertificationList"></div>
+                    </section>
+
+                    <section id="projectsSection" class="cv-section" hidden>
+                        <h2>Projects</h2>
+                        <div id="previewProjectList"></div>
+                    </section>
+
+                    <section id="achievementsSection" class="cv-section" hidden>
+                        <h2>Achievements and Awards</h2>
+                        <div id="previewAchievements"></div>
+                    </section>
+
+                    <section id="volunteerSection" class="cv-section" hidden>
+                        <h2>Volunteer Experience</h2>
+                        <div id="previewVolunteer"></div>
+                    </section>
+
+                    <section id="languagesSection" class="cv-section" hidden>
+                        <h2>Languages</h2>
+                        <div id="previewLanguages"></div>
+                    </section>
+
+                    <section id="referencesSection" class="cv-section" hidden>
+                        <h2>References</h2>
+                        <div id="previewReferences"></div>
+                    </section>
+
+                </article>
+
+            </div>
+
+            <div class="preview-actions">
+                <button
+                    type="button"
+                    id="downloadButton"
+                    class="button button-primary"
+                >Download / Print CV as PDF</button>
+
+                <p class="preview-note">
+                    Review your details before exporting. Use the browser's
+                    print window to save your CV as a PDF.
+                </p>
+            </div>
+<!-- CV IMPROVEMENT ASSISTANT -->
+<section class="cv-assistant" id="cvAssistant">
+
+    <div class="assistant-header">
+        <div>
+            <h2>🤖 CV Improvement Assistant</h2>
+            <p>Get suggestions to make your CV stronger.</p>
+        </div>
+
+        <button type="button" id="analyzeCVButton">
+            Analyze My CV
+        </button>
+    </div>
+
+    <div class="cv-score-container">
+        <div class="cv-score-circle">
+            <span id="cvScore">0</span>
+            <small>/100</small>
+        </div>
+
+        <div>
+            <h3 id="cvScoreTitle">Ready to analyze?</h3>
+            <p id="cvScoreDescription">
+                Complete your CV and analyze it to receive suggestions.
+            </p>
+        </div>
+    </div>
+
+    <div id="cvSuggestions" aria-live="polite">
+        <p>Your CV improvement suggestions will appear here.</p>
+    </div>
+
+</section>
+
+        </aside>
+
+    </div>
+
+</main>
+
+<footer class="app-footer">
+    <p>
+        &copy; <span id="currentYear"></span>
+        SmartCV Builder. Build your future, one application at a time.
+    </p>
+</footer>
+
+</body>
+</html>
+
